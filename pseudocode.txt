@@ -1,0 +1,65 @@
+// thinking behind button.addEventListener
+
+when you click a button, 
+    put the buttons content into the input content
+    store value of input into a variable (valueOne)
+if button.textContent == "+" 
+    let operator = "+"
+        whatever the next number is
+        put that as the new input.textContent
+        store value of input into variable (valueTwo)
+
+if (button.textContent == "=")
+    return operate(valueOne, operator, valueTwo)
+
+// thinking continued
+
+you can tell that the first number is done, when
+they type in an operator such as '+'.
+
+how do you get it to stop putting numbers in that
+array when an operator is put in?
+
+whatever number they put in after the '+' is the
+second value
+
+// "equals sign" thinking of the logic
+
+when you press equals
+    slice the numbers that are before the operator
+    out of the array and put it in a num1 variable
+second
+    log the operator as the operator
+third 
+    slice the number that are after the operator
+    out of the array and put it in a num2 variable
+
+
+
+
+// thoughts?
+
+while (button.textContent != "+") {
+    valuesOne.push(button.textContent);
+    input.textContent = valuesOne;
+}
+
+
+// potential code
+
+buttons.forEach((button) => {
+
+    button.addEventListener('click', () => {
+        
+            valuesOne.push(button.textContent);
+            console.log(valuesOne);
+            input.textContent = valuesOne;
+        
+
+        if (button.textContent == "+") {
+            operator = "+"
+            console.log(operator)
+            input.textContent = "+"
+        }
+    });
+});
