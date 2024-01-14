@@ -63,3 +63,24 @@ buttons.forEach((button) => {
         }
     });
 });
+
+
+// thoughts about implementing different operators
+
+when you click a number, than an operator, than
+another number, than another operator,
+    you should calculate the previous answer (result)
+    then use that answer(result) as number 1 and use
+    the next operator for whatever comes after
+    it & num2
+
+however how do you get the computer to get the
+index of the second operator if the operator
+symbol has been used twice? // we use lastIndexOf i think
+
+//some problems in the code
+
+1. when you click the '=' sign multiple times, it
+does whatever 'operator' and #'s you assigned it
+multiple times, and gets different numbers every times
+instead of keeping the same answer.

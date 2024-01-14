@@ -1,6 +1,5 @@
 const add = function(num1, num2) {
-    answer = (Number(num1) + Number(num2));
-    return answer;
+    return (Number(num1) + Number(num2));
 }
 
 const subtract = function(num1, num2) {
@@ -20,6 +19,8 @@ let num1;
 let num2;
 
 let operator;
+
+let result;
 
 const operate = function(num1, operator, num2) {
 
@@ -53,6 +54,24 @@ buttons.forEach((button) => {
             console.log(operator);
             input.textContent = "+";
         }
+
+        if (button.textContent == "-") {
+            operator = "-";
+            console.log(operator);
+            input.textContent = "-";
+        }
+
+        if (button.textContent == "*") {
+            operator = "*";
+            console.log(operator);
+            input.textContent = "*";
+        }
+
+        if (button.textContent == "/") {
+            operator = "/";
+            console.log(operator);
+            input.textContent = "/";
+        }
     });
 });
 
@@ -60,6 +79,7 @@ const clear = document.querySelector('#clear');
 
 clear.addEventListener('click', () => {
     valuesOne = [];
+    result = undefined;
     input.textContent = valuesOne;
     console.log(valuesOne);
 });
@@ -72,13 +92,18 @@ function isNumber(value) {
 
 equal.addEventListener('click', () => {
     console.log(valuesOne);
-    indexOfOperator = valuesOne.indexOf('+')
-    num1 = valuesOne.slice(0, indexOfOperator)
+    indexOfOperator = valuesOne.lastIndexOf(operator)
+    console.log(valuesOne.indexOf(0));
+    if (result != undefined) {
+        num1 = result;
+    } else {
+        num1 = valuesOne.slice(0, indexOfOperator)
+        num1 = num1.join("");
+        Number(num1);
+    }
     // num1 = num1.map(function(str) {
     //     return parseInt(str);
     // });
-    num1 = num1.join("");
-    Number(num1);
     console.log(isNumber(num1));
     console.log(num1)
     indexOfEquals = valuesOne.indexOf('=')
@@ -95,4 +120,37 @@ equal.addEventListener('click', () => {
     console.log(operate);
     result = operate(num1, operator, num2)
     console.log(result);
+    input.textContent = result;
 });  
+
+
+const addition = document.querySelector('#addition');
+
+addition.addEventListener('click', () => {
+    console.log(operator);
+    if (operator != undefined) {
+        if (operator == "+") sign = "+";
+        if (operator == "-") sign = "-";
+        if (operator == "*") sign = "*";
+        if (operator == "/") sign = "/";
+        
+        indexOfOperator = valuesOne.indexOf(sign);
+
+        if (result != undefined) {
+            num1 = result;
+        } else {
+            num1 = valuesOne.slice(0, indexOfOperator)
+            console.log(num1);
+            num1 = num1.join("");
+            Number(num1);
+        }
+        nextIndex = indexOfOperator + 1;
+        num2 = valuesOne.slice(nextIndex, -1)
+        num2 = num2.join("");
+        Number(num2);
+        console.log(num2);
+        result = operate(num1, sign, num2)
+        console.log(result);
+        input.textContent = result;
+    }
+});
