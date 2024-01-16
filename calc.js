@@ -96,6 +96,7 @@ equal.addEventListener('click', () => {
     console.log(valuesOne.indexOf(0));
     if (result != undefined) {
         num1 = result;
+        Number(num1);
     } else {
         num1 = valuesOne.slice(0, indexOfOperator)
         num1 = num1.join("");
@@ -104,9 +105,11 @@ equal.addEventListener('click', () => {
     // num1 = num1.map(function(str) {
     //     return parseInt(str);
     // });
+    console.log(typeof num1);
     console.log(isNumber(num1));
     console.log(num1)
     indexOfEquals = valuesOne.indexOf('=')
+    console.log(indexOfOperator)
     nextIndex = indexOfOperator + 1
     num2 = valuesOne.slice(nextIndex, indexOfEquals)
     // num2 = num2.map(function(str) {
@@ -128,14 +131,27 @@ const addition = document.querySelector('#addition');
 
 addition.addEventListener('click', () => {
     console.log(operator);
-    if (operator != undefined) {
+    if (operator !== undefined) {
         if (operator == "+") sign = "+";
         if (operator == "-") sign = "-";
         if (operator == "*") sign = "*";
         if (operator == "/") sign = "/";
         
-        indexOfOperator = valuesOne.indexOf(sign);
 
+        const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+")
+                a.push(i);
+                return a;
+            }, []);
+            console.log(chicken);
+
+               let turkey = (chicken[chicken.length-2]);
+                console.log(turkey);       
+            
+
+
+        indexOfOperator = valuesOne.lastIndexOf(sign);
+        console.log(indexOfOperator)
         if (result != undefined) {
             num1 = result;
         } else {
@@ -144,11 +160,20 @@ addition.addEventListener('click', () => {
             num1 = num1.join("");
             Number(num1);
         }
+        console.log(num1)
         nextIndex = indexOfOperator + 1;
-        num2 = valuesOne.slice(nextIndex, -1)
-        num2 = num2.join("");
-        Number(num2);
-        console.log(num2);
+        console.log(nextIndex)
+        if (turkey == undefined) {
+            num2 = 0;
+        } else {
+            num2 = valuesOne.slice(turkey, -1)
+            console.log(num2)
+            num2 = num2.join("");
+            console.log(num2);
+            Number(num2);
+            console.log(num2);
+        }
+        
         result = operate(num1, sign, num2)
         console.log(result);
         input.textContent = result;
