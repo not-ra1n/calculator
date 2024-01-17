@@ -132,3 +132,61 @@ signs have been clicked
     the second to last plus sign and up until the
     last plus sign but not including it
 
+
+// thoughts for adding after the equals sign 
+has already been hit
+
+if you press 1 + 3 and then the equals button
+    you get four
+however when you press another addition button
+after it, 
+    you get NAN
+
+when you click the plus button again
+    get the previous result, don't worry about
+    the equals sign and add it on whatever number
+    comes next 
+
+
+when you click an operator (such as '+')
+after the equals sign has already been hit,
+    get the result of the equals sign -
+    put it in a variable? (maybe num1)
+    don't worry about the equals sign
+    and whatever comes after the last operator
+    you put in, in num2 / besides whatever operator
+    you click next such as '+' or '='
+
+addition.addEventListener('click', () => {
+    const last = valuesOne[valuesOne.length - 2];
+    console.log(last);
+    if (last === '=') {
+        num1 = result;
+        valuesOne.splice(last, 1)
+        let num2 = 0
+
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () =>{
+                valuesTwo.push(button.textContent);
+                console.log(valuesTwo);
+                input.textContent = valuesTwo;
+            });
+        });
+        equal.addEventListener('click', () => {
+            console.log(valuesTwo);
+            indexOfOperator = valuesOne.lastIndexOf(operator) // you would have this already declared but we're adding it again just for readability sake
+            indexOfEquals = valuesOne.indexOf('=');
+            nextIndex = indexOfOperator + 1
+            num2 = valuesTwo.slice(0, indexOfEquals)
+            num2 = num2.join("");
+            Number(num2);
+            console.log(num2);
+            console.log(operator);
+            console.log(operate);
+            result = operate(num1, operator, num2)
+            console.log(result);
+            input.textContent = result;
+        });
+    }
+});
