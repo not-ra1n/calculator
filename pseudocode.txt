@@ -189,4 +189,50 @@ addition.addEventListener('click', () => {
             input.textContent = result;
         });
     }
-});
+});\
+
+// thoughts behind pressing the equals sign before
+any numbers
+
+so if you press equals sign before pressing any
+numbers or an operator
+
+let it equal 0
+
+/// continued
+
+if you press an equals sign after an equals sign
+has already been pressed
+    delete the equals sign
+        and return result again
+
+lastElement = valuesOne[valuesOne.length -1];
+secondLastElement = valuesOne[valuesOne.length -2];
+if (lastElement === "=" && secondLastElement === "=") {
+    valuesOne.pop();
+    console.log(result);
+    input.textContent = result;
+}
+
+/// continued
+
+if last element is equals sign 
+&& operator === undefined {
+    than just result the result
+}
+
+if (lastElement === "=" && operator === undefined) {
+    input.textContent = num1;
+}
+
+// thoughts behind pressing a "+" after a "+" sign
+has already been hit
+
+lastElement = valuesOne[valuesOne.length -1];
+    secondLastElement = valuesOne[valuesOne.length -2];
+    if (lastElement === "+" && secondLastElement === "+") {
+        valuesOne.pop();
+        console.log(valuesOne);
+        console.log(result);
+        input.textContent = result;
+    } 
