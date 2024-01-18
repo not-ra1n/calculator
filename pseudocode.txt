@@ -236,3 +236,21 @@ lastElement = valuesOne[valuesOne.length -1];
         console.log(result);
         input.textContent = result;
     } 
+
+
+// thoughts behind doing an operation with numbers when
+a different operation has been hit and there was no
+equals sign
+
+lets say user input 1 + 2 and then inputs -
+    you should get num1 via the previous calculation
+    for example (1 + 2 = 3 /// 3 = num1 /// num1 - 
+    whatever comes next)
+
+/// thoughts behind potential error behind this
+
+it might have to do with, "lastIndexOf(sign)" like on
+for example line 228,
+
+you might also have to change what 'e' equals maybe? 
+(like for example on line 216)
