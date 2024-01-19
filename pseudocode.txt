@@ -254,3 +254,21 @@ for example line 228,
 
 you might also have to change what 'e' equals maybe? 
 (like for example on line 216)
+
+// errors you need to fix (1/18/24)
+
+multiplication after you cleared a result from
+addition doesn't work 
+
+1 + 1 = 2 + 2 = 4 /// clear
+then
+1 * 2 /// equals NaN
+
+/ another error
+
+if you click the plus sign multiple times
+it still appears? why? idk ill fix it
+
+/ even though you cleared and didn't press addition and
+pressed multiplication, the valuesTwo for addition
+increased 
