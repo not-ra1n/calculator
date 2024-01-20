@@ -464,6 +464,19 @@ multiplication.addEventListener('click', () => {
     
 });
 
+Number.prototype.countDecimals = function () {
+
+    if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
+
+    var str = this.toString();
+    if (str.indexOf(".") !== -1 && str.indexOf("-") !== -1) {
+        return str.split("-")[1] || 0;
+    } else if (str.indexOf(".") !== -1) {
+        return str.split(".")[1].length || 0;
+    }
+    return str.split("-")[1] || 0;
+}
+
 const division = document.querySelector('#division');
 
 division.addEventListener('click', () => {
@@ -523,6 +536,9 @@ division.addEventListener('click', () => {
                 console.log(operator);
                 console.log(operate);
                 result = operate(num1, operator, num2)
+                if (result.countDecimals() > 7) {
+                    result = result.toFixed(7);
+                }                
                 console.log(result);
                 input.textContent = result;
             });
@@ -578,6 +594,11 @@ division.addEventListener('click', () => {
             result = operate(num1, water, num2)
         }
         console.log(result);
+        console.log(result.countDecimals())
+        if (result.countDecimals() > 7) {
+            result = result.toFixed(7);
+        }
+        console.log(result);
         input.textContent = result;
         }
     
@@ -586,6 +607,8 @@ division.addEventListener('click', () => {
     }
     
 });
+
+
 
 const clear = document.querySelector('#clear');
 
@@ -618,20 +641,41 @@ equal.addEventListener('click', () => {
         }
     }
 
+    if(valuesTwo.length === 1) {
+        console.log(valuesTwo.length)
+        if (valuesTwo.includes("=")) {
+            valuesTwo = valuesTwo.splice(0, -1);
+            console.log(valuesTwo);
+        }
+    }
+
     // checks if 2 "=" signs have been hit in the same sequence
     lastElement = valuesOne[valuesOne.length -1];
     secondLastElement = valuesOne[valuesOne.length -2];
-    if (lastElement === "=" && secondLastElement === "=") {
+    lastElement2 = valuesTwo[valuesTwo.length -1];
+    secondLastElement2 = valuesTwo[valuesTwo.length -2];
+    if (lastElement === "=" && secondLastElement === "=" 
+    && lastElement2 === "=" && secondLastElement2 === "=") {
         valuesOne.pop();
         console.log(valuesOne);
         console.log(result);
         input.textContent = result;
-    } else if (lastElement === "=" && operator === undefined) {
+        valuesTwo.pop();
+        console.log(valuesTwo);
+        console.log(result);
+        input.textContent = result;
+    } else if (lastElement === "=" && operator === undefined 
+    && lastElement2 === "=" && operator === undefined) {
         console.log(num1);
         console.log(valuesOne);
         valuesOne = valuesOne.slice(0, -1)
         console.log(result);
         input.textContent = valuesOne;
+        console.log(num1);
+        console.log(valuesTwo);
+        valuesTwo = valuesTwo.slice(0, -1)
+        console.log(result);
+        input.textContent = valuesTwo;
     } else {
         indexOfOperator = valuesOne.lastIndexOf(operator)
         console.log(valuesOne.indexOf(0));
@@ -664,6 +708,9 @@ equal.addEventListener('click', () => {
         console.log(operate);
         result = operate(num1, operator, num2)
         console.log(result);
+        if (result.countDecimals() > 7) {
+            result = result.toFixed(7);
+        }
         input.textContent = result;
     }
 
