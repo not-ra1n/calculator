@@ -71,7 +71,11 @@ buttons.forEach((button) => {
 
             valuesOne.push(button.textContent);
             console.log(valuesOne);
-            input.textContent = valuesOne.join("");
+            if (valuesOne.indexOf("=") == 0) {
+                input.textContent = 0;
+            } else {
+                input.textContent = valuesOne.join("");
+            }
 
         // shows you only the numbers you've inputed / the #'s you get
             if (operator != undefined) {
@@ -100,8 +104,11 @@ buttons.forEach((button) => {
     button.addEventListener('click', () =>{
         valuesTwo.push(button.textContent);
         console.log(valuesTwo);
-        input.textContent = valuesTwo.join("");
-        // shows you only the numbers you've inputed / the #'s you get
+        if (valuesTwo.indexOf("=") == 0) {
+            input.textContent = 0;
+        } else {
+            input.textContent = valuesTwo.join("");
+        }        // shows you only the numbers you've inputed / the #'s you get
         if (operator != undefined) {
             if (operator == valuesTwo[valuesTwo.length-1]) {
                 input.textContent = result;
