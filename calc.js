@@ -39,16 +39,12 @@ let valuesOne = [];
 
 let valuesTwo = [];
 
+input.textContent = 0;
 
 buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
         
-            valuesOne.push(button.textContent);
-            console.log(valuesOne);
-            input.textContent = valuesOne;
-        
-
         if (button.textContent == "+") {
             operator = "+";
             console.log(operator);
@@ -72,6 +68,31 @@ buttons.forEach((button) => {
             console.log(operator);
             input.textContent = "/";
         }
+
+            valuesOne.push(button.textContent);
+            console.log(valuesOne);
+            input.textContent = valuesOne.join("");
+
+        // shows you only the numbers you've inputed / the #'s you get
+            if (operator != undefined) {
+                if (operator == valuesOne[valuesOne.length-1]) {
+                    input.textContent = result;
+                } else {
+                    locationOfOperator = valuesOne.lastIndexOf(operator)
+                locationOfOperatorOne = locationOfOperator + 1
+                input.textContent = valuesOne.slice(locationOfOperatorOne).join("")
+                
+                console.log(input.textContent);
+                }
+            }
+     
+            // else {
+            //     input.textContent = valuesOne.join("");
+            // }
+
+        
+
+        
     });
 });
 
@@ -79,10 +100,24 @@ buttons.forEach((button) => {
     button.addEventListener('click', () =>{
         valuesTwo.push(button.textContent);
         console.log(valuesTwo);
-        input.textContent = valuesTwo;
+        input.textContent = valuesTwo.join("");
+        // shows you only the numbers you've inputed / the #'s you get
+        if (operator != undefined) {
+            if (operator == valuesTwo[valuesTwo.length-1]) {
+                input.textContent = result;
+            } else {
+                locationOfOperator = valuesTwo.lastIndexOf(operator)
+            locationOfOperatorOne = locationOfOperator + 1
+            input.textContent = valuesTwo.slice(locationOfOperatorOne).join("");
+            console.log(input.textContent);
+            } 
+            // else {
+            //     input.textContent = valuesTwo.join("");
+            // }
+            }
+            
     });
 });
-
 
 const addition = document.querySelector('#addition');
 
@@ -117,7 +152,7 @@ addition.addEventListener('click', () => {
             console.log(valuesTwo);
             console.log(valuesOne);
             console.log(input.textContent)
-            input.textContent = valuesTwo;
+            input.textContent = num1;
             // let keyboard = valuesTwo.indexOf('=');
             // let mouse = valuesTwo.splice(keyboard, 1)
 
@@ -138,7 +173,7 @@ addition.addEventListener('click', () => {
             clear.addEventListener('click', () => {
                 valuesTwo = [];
                 result = undefined;  
-                input.textContent = valuesTwo;
+                input.textContent = 0;
                 console.log(valuesOne);
                 console.log(valuesTwo);
             });
@@ -168,6 +203,7 @@ addition.addEventListener('click', () => {
                 input.textContent = result;
             });
         } else {
+            // checks all occurrences of an operator
             const chicken = valuesOne.reduce((a, e, i) => {
                 if (e === "+" || e === "-"
                 || e === "*" || e === "/")
@@ -269,6 +305,7 @@ subtraction.addEventListener('click', () => {
                 indexOfEquals = valuesTwo.indexOf('=');
                 console.log(indexOfEquals);
                 nextIndex = indexOfOperator + 1
+                indexOfOperatorTwo = valuesTwo.lastIndexOf(operator) // you would have this already declared but we're adding it again just for readability sake
                 if (indexOfOperatorTwo === -1) {
                     num2 = valuesTwo.slice(0, indexOfEquals)
                 } else {
@@ -376,7 +413,7 @@ multiplication.addEventListener('click', () => {
             // let keyboard = valuesTwo.indexOf('=');
             // let mouse = valuesTwo.splice(keyboard, 1)
             valuesTwo = valuesTwo.splice(0, -1)
-            let num2 = 0
+            let num2 = 1
     
     
             // buttons.forEach((button) => {
@@ -393,6 +430,7 @@ multiplication.addEventListener('click', () => {
                 indexOfEquals = valuesTwo.indexOf('=');
                 console.log(indexOfEquals);
                 nextIndex = indexOfOperator + 1
+                indexOfOperatorTwo = valuesTwo.lastIndexOf(operator) // you would have this already declared but we're adding it again just for readability sake
                 if (indexOfOperatorTwo === -1) {
                     num2 = valuesTwo.slice(0, indexOfEquals)
                 } else {
@@ -507,7 +545,7 @@ division.addEventListener('click', () => {
             // let keyboard = valuesTwo.indexOf('=');
             // let mouse = valuesTwo.splice(keyboard, 1)
             valuesTwo = valuesTwo.splice(0, -1)
-            let num2 = 0
+            let num2 = 1
     
     
             // buttons.forEach((button) => {
@@ -524,6 +562,7 @@ division.addEventListener('click', () => {
                 indexOfEquals = valuesTwo.indexOf('=');
                 console.log(indexOfEquals);
                 nextIndex = indexOfOperator + 1
+                indexOfOperatorTwo = valuesTwo.lastIndexOf(operator) // you would have this already declared but we're adding it again just for readability sake
                 if (indexOfOperatorTwo === -1) {
                     num2 = valuesTwo.slice(0, indexOfEquals)
                 } else {
@@ -535,10 +574,14 @@ division.addEventListener('click', () => {
                 console.log(num2);
                 console.log(operator);
                 console.log(operate);
-                result = operate(num1, operator, num2)
-                if (result.countDecimals() > 7) {
-                    result = result.toFixed(7);
-                }                
+                if (num2 == 0) {
+                    result = "lol"
+                } else {
+                    result = operate(num1, operator, num2)
+                    if (result.countDecimals() > 7) {
+                        result = result.toFixed(7);
+                    }
+                }              
                 console.log(result);
                 input.textContent = result;
             });
@@ -584,19 +627,22 @@ division.addEventListener('click', () => {
             Number(num2);
             console.log(num2);
         }
-        
-        // you changed "sign" to "water" in all of
-        // the same locations in different operators
-        // for the next line of code
-        if (water === undefined) {
-            result = operate(num1, sign, num2);
+        if (num2 == 0) {
+            result = "lol"
         } else {
-            result = operate(num1, water, num2)
-        }
-        console.log(result);
-        console.log(result.countDecimals())
-        if (result.countDecimals() > 7) {
-            result = result.toFixed(7);
+            // you changed "sign" to "water" in all of
+            // the same locations in different operators
+            // for the next line of code
+            if (water === undefined) {
+                result = operate(num1, sign, num2);
+            } else {
+                result = operate(num1, water, num2)
+            }
+            console.log(result);
+            console.log(result.countDecimals())
+            if (result.countDecimals() > 7) {
+                result = result.toFixed(7);
+            }
         }
         console.log(result);
         input.textContent = result;
@@ -616,8 +662,7 @@ clear.addEventListener('click', () => {
     valuesOne = [];
     valuesTwo = [];
     result = undefined;  
-    input.textContent = valuesOne;
-    input.textContent = valuesTwo;
+    input.textContent = 0;
     console.log(valuesOne);
     console.log(valuesTwo);
 });
@@ -706,13 +751,23 @@ equal.addEventListener('click', () => {
         console.log(num2);
         console.log(operator);
         console.log(operate);
-        result = operate(num1, operator, num2)
-        console.log(result);
-        if (result.countDecimals() > 7) {
-            result = result.toFixed(7);
+        if (operator == "/" && num2 == 0) {
+            result = "lol";
+        } else {
+            result = operate(num1, operator, num2)
+            console.log(result);
+            if (result.countDecimals() > 7) {
+                result = result.toFixed(7);
+            }
         }
+        console.log(result);
         input.textContent = result;
     }
 
     
 });  
+
+if (result != undefined) {
+    console.log(result);
+    input.textContent = result;
+}

@@ -242,3 +242,155 @@ lastElement = valuesOne[valuesOne.length -1];
 you need to update the value that is shown on the display
 rather then like showing (1 + 2) it should show
 3, etc yk?
+
+if (result != undefined) {
+    input.textContent = result;
+}
+
+/ thoughts behind fixing error
+
+whatever numbers/number you click after an operator (such 
+as a plus sign) that is what should you be the input.textContent
+
+1. it should just be the first numbers you put in
+2. you should press an operator and nothing should happen
+on the input.textContent
+3. the numbers that you press after the operator that you selected
+would be the numbers displayed
+
+
+const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+            console.log(chicken);
+    
+               let turkey = (chicken[chicken.length-2]);
+                console.log(turkey);       
+            
+                let water = valuesOne[turkey];
+                console.log(water);
+
+
+const checker = valuesOne.reduce((a, e, i) => {
+    if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+}, []);
+console.log(checker);
+
+let checker2 = (checker[checker.length-2]);
+console.log(checker);
+
+let checker3 = valuesOne[checker2];
+console.log(checker3);
+
+const checker = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                            || e === "*" || e === "/")
+                            a.push(i);
+                            return a;
+            }, []);
+            console.log(checker);
+            
+            let checker2 = (checker[checker.length-2]);
+            console.log(checker2);
+            
+            let checker3 = valuesOne[checker2];
+            console.log(checker3);
+
+
+
+
+
+
+
+/ to check what the numbers are after the operator has already
+been hit
+
+pencil = secondtoLast element in the valuesone array
+eraser = last element in the valuesOne array
+
+if a number was pressed after an operator {
+    input.textContent = the numbers after the operator
+}
+
+lastElementValues = valuesOne[valuesOne.length -1];
+while (lastElementValues != "=" && lastElementValues != operator) {
+    lechon = valuesOne.indexOf("+");
+    lechonNext = lechon + 1
+    input.textContent = valuesOne.slice(lechonNext, -1);
+}
+
+console.log(valuesOne.indexOf("+"));
+
+
+if (operator != undefined) {
+    locationOfOperator = valuesOne.indexOf(operator)
+        const checker = valuesOne.reduce((a, e, i) => {
+        if (e === "+" || e === "-"
+                    || e === "*" || e === "/")
+                    a.push(i);
+                    return a;
+    }, []);
+        console.log(checker);
+        
+        let checker2 = (checker[checker.length-2]);
+        console.log(checker2);
+        
+        let checker3 = valuesOne[checker2];
+        console.log(checker3);
+    // you want to check if the operators array has been updated or
+    // the last thing in the valuesOne array is an equals sign
+}
+
+
+while (operator === the last index of the operators array (for 
+example "2"))
+    do a certain loop
+
+
+existingChecker = checker
+while (checker.length !==)
+
+
+if valuesTwo.length doesn't increase, keep result as input.textContent
+
+
+lengthOfArray = valuesOne.length;
+compare = lengthOfArray;
+setInterval(function() 
+if (lengthOfArray != compare) {
+    compare > lengthOfArray console.log('decreased') : console.log('increased');
+}, 1000);
+
+if (lengthOfArray doesn't increase) {
+    input.textContent = result;
+} else
+
+compare = lengthOfArray
+
+while (lengthOfArray === compare) {
+    input.textContent = result
+}
+
+if (operator == valuesOne[valuesOne.length-1]) {
+    input.textContent = result;
+} else {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
