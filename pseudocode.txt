@@ -249,9 +249,47 @@ then add some design and make it look good!
 
 
 
+if there are more than 8 numbers before an operator is pressed,
+    delete the last number
+
+if (valuesOne[valuesOne.length - 1] != operator
+|| valuesOne[valuesOne.length -1 != "="]) {
+    if (valuesOne.length > 8) {
+        valuesOne.pop();
+    }
+    if (valuesOne.length > 8) {
+        valuesOne.pop();
+    }
+}
+
+if (result === undefined) {
+    if (valuesOne[valuesOne.length - 1] != operator) {
+        if (valuesOne.length > 8) {
+            valuesOne.pop();
+        }
+    }
+    if (valuesTwo[valuesTwo.length - 1] != operator) {
+        if (valuesTwo.length > 8) {
+            valuesTwo.pop();
+        }
+    }
+} else {
+    if ()
+}
 
 
 
+
+
+
+
+
+var length = (number + '').replace('.', '').length;  // for floats
+
+function getlength(number) {
+    number = valuesOne.length
+    return number.toString().length;
+}
 
 
 

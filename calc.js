@@ -132,10 +132,17 @@ addition.addEventListener('click', () => {
     console.log(operator);
     lastElement = valuesOne[valuesOne.length -1];
     secondLastElement = valuesOne[valuesOne.length -2];
-    if (lastElement === "+" && secondLastElement === "+") {
-        valuesOne.pop();
+    if (lastElement === operator && secondLastElement === operator) {
+        valuesOne = valuesOne.splice(secondLastElement, -1);
+        valuesTwo = valuesTwo.splice(secondLastElement, -1);
         console.log(valuesOne);
         console.log(result);
+        input.textContent = result;
+    } else if (lastElement === "=" && secondLastElement === operator) {
+        lastOperator = valuesOne.lastIndexOf(operator);
+        valuesOne = valuesOne.splice(lastOperator, -1);
+        valuesTwo = valuesTwo.splice(lastOperator, -1);
+        console.log(valuesTwo);
         input.textContent = result;
     } else {
         if (operator !== undefined) {
@@ -207,6 +214,10 @@ addition.addEventListener('click', () => {
                 console.log(operate);
                 result = operate(num1, operator, num2)
                 console.log(result);
+                if (result.countDecimals() > 5) {
+                    result = result.toFixed(5);
+                }
+                console.log(result);
                 input.textContent = result;
             });
         } else {
@@ -256,6 +267,10 @@ addition.addEventListener('click', () => {
             result = operate(num1, water, num2)
         }
         console.log(result);
+        if (result.countDecimals() > 5) {
+            result = result.toFixed(5);
+        }
+        console.log(result);
         input.textContent = result;
         }
     
@@ -271,10 +286,16 @@ subtraction.addEventListener('click', () => {
     console.log(operator);
     lastElement = valuesOne[valuesOne.length -1];
     secondLastElement = valuesOne[valuesOne.length -2];
-    if (lastElement === "-" && secondLastElement === "-") {
-        valuesOne.pop();
+    if (lastElement === operator && secondLastElement === operator) {
+        valuesOne = valuesOne.splice(secondLastElement, -1);
+        valuesTwo = valuesTwo.splice(secondLastElement, -1);
         console.log(valuesOne);
         console.log(result);
+        input.textContent = result;
+    } else if (lastElement === "=" && secondLastElement === operator) {
+        lastOperator = valuesOne.lastIndexOf(operator);
+        valuesOne = valuesOne.splice(lastOperator, -1);
+        valuesTwo = valuesTwo.splice(lastOperator, -1);
         input.textContent = result;
     } else {
         if (operator !== undefined) {
@@ -325,6 +346,10 @@ subtraction.addEventListener('click', () => {
                 console.log(operator);
                 console.log(operate);
                 result = operate(num1, operator, num2)
+                console.log(result);
+                if (result.countDecimals() > 5) {
+                    result = result.toFixed(5);
+                }
                 console.log(result);
                 input.textContent = result;
             });
@@ -381,6 +406,10 @@ subtraction.addEventListener('click', () => {
             result = operate(num1, water, num2)
         }
         console.log(result);
+        if (result.countDecimals() > 5) {
+            result = result.toFixed(5);
+        }
+        console.log(result);
         input.textContent = result;
         }
     
@@ -396,10 +425,16 @@ multiplication.addEventListener('click', () => {
     console.log(operator);
     lastElement = valuesOne[valuesOne.length -1];
     secondLastElement = valuesOne[valuesOne.length -2];
-    if (lastElement === "*" && secondLastElement === "*") {
-        valuesOne.pop();
+    if (lastElement === operator && secondLastElement === operator) {
+        valuesOne = valuesOne.splice(secondLastElement, -1);
+        valuesTwo = valuesTwo.splice(secondLastElement, -1);
         console.log(valuesOne);
         console.log(result);
+        input.textContent = result;
+    } else if (lastElement === "=" && secondLastElement === operator) {
+        lastOperator = valuesOne.lastIndexOf(operator);
+        valuesOne = valuesOne.splice(lastOperator, -1);
+        valuesTwo = valuesTwo.splice(lastOperator, -1);
         input.textContent = result;
     } else {
         if (operator !== undefined) {
@@ -451,6 +486,10 @@ multiplication.addEventListener('click', () => {
                 console.log(operate);
                 result = operate(num1, operator, num2)
                 console.log(result);
+                if (result.countDecimals() > 5) {
+                    result = result.toFixed(5);
+                }
+                console.log(result);
                 input.textContent = result;
             });
         } else {
@@ -499,6 +538,10 @@ multiplication.addEventListener('click', () => {
         } else {
             result = operate(num1, water, num2)
         }
+            console.log(result);
+            if (result.countDecimals() > 5) {
+                result = result.toFixed(5);
+            }
         console.log(result);
         input.textContent = result;
         }
@@ -528,10 +571,17 @@ division.addEventListener('click', () => {
     console.log(operator);
     lastElement = valuesOne[valuesOne.length -1];
     secondLastElement = valuesOne[valuesOne.length -2];
-    if (lastElement === "/" && secondLastElement === "/") {
-        valuesOne.pop();
+    if (lastElement === operator && secondLastElement === operator) {
+        valuesOne = valuesOne.splice(secondLastElement, -1);
+        valuesTwo = valuesTwo.splice(secondLastElement, -1);
         console.log(valuesOne);
         console.log(result);
+        input.textContent = result;
+    } else if (lastElement === "=" && secondLastElement === operator) {
+        lastOperator = valuesOne.lastIndexOf(operator);
+        valuesOne = valuesOne.splice(lastOperator, -1);
+        valuesTwo = valuesTwo.splice(lastOperator, -1);
+        console.log(valuesTwo);
         input.textContent = result;
     } else {
         if (operator !== undefined) {
@@ -585,8 +635,8 @@ division.addEventListener('click', () => {
                     result = "lol"
                 } else {
                     result = operate(num1, operator, num2)
-                    if (result.countDecimals() > 7) {
-                        result = result.toFixed(7);
+                    if (result.countDecimals() > 5) {
+                        result = result.toFixed(5);
                     }
                 }              
                 console.log(result);
@@ -647,8 +697,8 @@ division.addEventListener('click', () => {
             }
             console.log(result);
             console.log(result.countDecimals())
-            if (result.countDecimals() > 7) {
-                result = result.toFixed(7);
+            if (result.countDecimals() > 5) {
+                result = result.toFixed(5);
             }
         }
         console.log(result);
@@ -727,7 +777,8 @@ equal.addEventListener('click', () => {
         console.log(valuesTwo);
         valuesTwo = valuesTwo.slice(0, -1)
         console.log(result);
-        input.textContent = valuesTwo;
+        console.log(num1)
+        input.textContent = valuesOne.join("");
     } else {
         indexOfOperator = valuesOne.lastIndexOf(operator)
         console.log(valuesOne.indexOf(0));
@@ -763,8 +814,8 @@ equal.addEventListener('click', () => {
         } else {
             result = operate(num1, operator, num2)
             console.log(result);
-            if (result.countDecimals() > 7) {
-                result = result.toFixed(7);
+            if (result.countDecimals() > 5) {
+                result = result.toFixed(5);
             }
         }
         console.log(result);
