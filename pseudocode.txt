@@ -243,11 +243,12 @@ you might need to fix the amount of numbers you could input
 so that it doesn't overflow the calculator screen
 
 
+
 then add some design and make it look good!
 
 
 
-
+/ ideas behind fixing overflow
 
 if there are more than 8 numbers before an operator is pressed,
     delete the last number
@@ -274,13 +275,14 @@ if (result === undefined) {
         }
     }
 } else {
-    if ()
+    let resultArray = String(result).split("").map((result) => {
+        return Number(result)  
+    })
+    if (resultArray.length > 8) {
+        resultArray.pop();
+        result = resultArray
+    }
 }
-
-
-
-
-
 
 
 
@@ -291,5 +293,39 @@ function getlength(number) {
     return number.toString().length;
 }
 
+
+/ logic for num2 fix?
+
+when result is defined, the first operator should also be defined
+    the numbers between the first operator and the last operator/equals sign
+    would be num2
+    if the num2.length is greater than 8 than
+        pop the last number out
+
+
+
+
+const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+            console.log(chicken);
+    
+               let turkey = (chicken[chicken.length-2]);
+                console.log(turkey);       
+            
+                let water = valuesOne[turkey];
+                console.log(water);
+
+
+
+
+
+
+// cool features to implement (1/23/24)
+
+if you click an operator, have that operator selected until a number is clicked
 
 

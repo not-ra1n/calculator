@@ -77,9 +77,37 @@ buttons.forEach((button) => {
                 input.textContent = valuesOne.join("");
             }
 
+
+            // to not overflow numbers?
+            if (result === undefined) {
+                if (valuesOne[valuesOne.length - 1] != operator) {
+                    if (valuesOne.length > 8) {
+                        valuesOne.pop();
+                    }
+                }
+            } else {
+                let resultArray = String(result).split("").map((result) => {
+                    return Number(result)  
+                })
+                if (resultArray.length > 8) {
+                    while (resultArray.length > 8) {
+                        resultArray.pop();
+                    }
+                    result = resultArray
+                }
+            }
+            
+
         // shows you only the numbers you've inputed / the #'s you get
             if (operator != undefined) {
-                if (operator == valuesOne[valuesOne.length-1]) {
+                lastElement = valuesOne[valuesOne.length -1];
+                secondLastElement = valuesOne[valuesOne.length -2];
+                if (secondLastElement === "=" && lastElement !== operator && lastElement !== "=") {
+                    console.log(result);
+                    valuesOne.pop()
+                    console.log(result);
+                    input.textContent = result;
+                } else if (operator == valuesOne[valuesOne.length-1]) {
                     input.textContent = result;
                 } else {
                     locationOfOperator = valuesOne.lastIndexOf(operator)
@@ -104,15 +132,43 @@ buttons.forEach((button) => {
     button.addEventListener('click', () =>{
         valuesTwo.push(button.textContent);
         console.log(valuesTwo);
+
+        // to not overflow numbers?
+        if (result === undefined) {
+            if (valuesTwo[valuesTwo.length - 1] != operator) {
+                if (valuesTwo.length > 8) {
+                    valuesTwo.pop();
+                }
+            }
+        } else {
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                result = resultArray
+            }
+        }
+        
         if (valuesTwo.indexOf("=") == 0) {
             input.textContent = 0;
         } else {
             input.textContent = valuesTwo.join("");
         }        // shows you only the numbers you've inputed / the #'s you get
         if (operator != undefined) {
-            if (operator == valuesTwo[valuesTwo.length-1]) {
+            lastElement = valuesTwo[valuesTwo.length -1];
+            secondLastElement = valuesTwo[valuesTwo.length -2];
+            if (secondLastElement === "=" && lastElement !== operator && lastElement !== "=") {
+                console.log(result);
+                valuesTwo.pop();
+                console.log(result);
+                input.textContent = result;
+            } else if (operator == valuesTwo[valuesTwo.length-1]) {
                 input.textContent = result;
             } else {
+                console.log(result)
                 locationOfOperator = valuesTwo.lastIndexOf(operator)
             locationOfOperatorOne = locationOfOperator + 1
             input.textContent = valuesTwo.slice(locationOfOperatorOne).join("");
@@ -138,6 +194,9 @@ addition.addEventListener('click', () => {
         console.log(valuesOne);
         console.log(result);
         input.textContent = result;
+    } else if (secondLastElement === "=" && lastElement !== operator) {
+        valuesOne.pop()
+        valuesTwo.pop()
     } else if (lastElement === "=" && secondLastElement === operator) {
         lastOperator = valuesOne.lastIndexOf(operator);
         valuesOne = valuesOne.splice(lastOperator, -1);
@@ -212,11 +271,26 @@ addition.addEventListener('click', () => {
                 console.log(num2);
                 console.log(operator);
                 console.log(operate);
+                if (operator == "/" && num2 == 0) {
+                    result = "lol";
+                } else {
                 result = operate(num1, operator, num2)
                 console.log(result);
                 if (result.countDecimals() > 5) {
                     result = result.toFixed(5);
                 }
+            }
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                resultArray = resultArray.join("");
+                    resultArray = Number(resultArray);
+                result = resultArray
+            }
                 console.log(result);
                 input.textContent = result;
             });
@@ -261,7 +335,9 @@ addition.addEventListener('click', () => {
             Number(num2);
             console.log(num2);
         }
-        if (water === undefined) {
+        if (operator == "/" && num2 == 0) {
+            result = "lol";
+        } else if (water === undefined) {
             result = operate(num1, sign, num2);
         } else {
             result = operate(num1, water, num2)
@@ -269,6 +345,18 @@ addition.addEventListener('click', () => {
         console.log(result);
         if (result.countDecimals() > 5) {
             result = result.toFixed(5);
+        }
+        // to not overflow numbers?
+        let resultArray = String(result).split("").map((result) => {
+            return Number(result)  
+        })
+        if (resultArray.length > 8) {
+            while (resultArray.length > 8) {
+                resultArray.pop();         
+            }
+            resultArray = resultArray.join("");
+                resultArray = Number(resultArray);
+            result = resultArray;
         }
         console.log(result);
         input.textContent = result;
@@ -292,6 +380,9 @@ subtraction.addEventListener('click', () => {
         console.log(valuesOne);
         console.log(result);
         input.textContent = result;
+    } else if (secondLastElement === "=" && lastElement !== operator) {
+        valuesOne.pop()
+        valuesTwo.pop()
     } else if (lastElement === "=" && secondLastElement === operator) {
         lastOperator = valuesOne.lastIndexOf(operator);
         valuesOne = valuesOne.splice(lastOperator, -1);
@@ -345,11 +436,24 @@ subtraction.addEventListener('click', () => {
                 console.log(num2);
                 console.log(operator);
                 console.log(operate);
+                if (operator == "/" && num2 == 0) {
+                    result = "lol";
+                } else {
                 result = operate(num1, operator, num2)
                 console.log(result);
                 if (result.countDecimals() > 5) {
                     result = result.toFixed(5);
                 }
+            }
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                result = resultArray
+            }
                 console.log(result);
                 input.textContent = result;
             });
@@ -400,12 +504,25 @@ subtraction.addEventListener('click', () => {
         console.log(sign);
         console.log(water);
         // replaced "sign" with "turkey in the next line of code / may have to change"
-        if (water === undefined) {
+        if (operator == "/" && num2 == 0) {
+            result = "lol";
+        } else if (water === undefined) {
             result = operate(num1, sign, num2);
         } else {
             result = operate(num1, water, num2)
         }
         console.log(result);
+
+        let resultArray = String(result).split("").map((result) => {
+            return Number(result)  
+        })
+        if (resultArray.length > 8) {
+            while (resultArray.length > 8) {
+                resultArray.pop();
+            }
+            result = resultArray
+        }
+
         if (result.countDecimals() > 5) {
             result = result.toFixed(5);
         }
@@ -431,6 +548,9 @@ multiplication.addEventListener('click', () => {
         console.log(valuesOne);
         console.log(result);
         input.textContent = result;
+    } else if (secondLastElement === "=" && lastElement !== operator) {
+        valuesOne.pop()
+        valuesTwo.pop()
     } else if (lastElement === "=" && secondLastElement === operator) {
         lastOperator = valuesOne.lastIndexOf(operator);
         valuesOne = valuesOne.splice(lastOperator, -1);
@@ -484,11 +604,26 @@ multiplication.addEventListener('click', () => {
                 console.log(num2);
                 console.log(operator);
                 console.log(operate);
+                if (operator == "/" && num2 == 0) {
+                    result = "lol";
+                } else {
                 result = operate(num1, operator, num2)
                 console.log(result);
                 if (result.countDecimals() > 5) {
                     result = result.toFixed(5);
                 }
+            }
+
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                result = resultArray
+            }
+
                 console.log(result);
                 input.textContent = result;
             });
@@ -532,8 +667,9 @@ multiplication.addEventListener('click', () => {
             Number(num2);
             console.log(num2);
         }
-        
-        if (water === undefined) {
+        if (operator == "/" && num2 == 0) {
+            result = "lol";
+        } else if (water === undefined) {
             result = operate(num1, sign, num2);
         } else {
             result = operate(num1, water, num2)
@@ -542,6 +678,17 @@ multiplication.addEventListener('click', () => {
             if (result.countDecimals() > 5) {
                 result = result.toFixed(5);
             }
+
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                result = resultArray
+            }
+
         console.log(result);
         input.textContent = result;
         }
@@ -577,6 +724,9 @@ division.addEventListener('click', () => {
         console.log(valuesOne);
         console.log(result);
         input.textContent = result;
+    } else if (secondLastElement === "=" && lastElement !== operator) {
+        valuesOne.pop()
+        valuesTwo.pop()
     } else if (lastElement === "=" && secondLastElement === operator) {
         lastOperator = valuesOne.lastIndexOf(operator);
         valuesOne = valuesOne.splice(lastOperator, -1);
@@ -639,6 +789,16 @@ division.addEventListener('click', () => {
                         result = result.toFixed(5);
                     }
                 }              
+
+                let resultArray = String(result).split("").map((result) => {
+                    return Number(result)  
+                })
+                if (resultArray.length > 8) {
+                    resultArray.pop();
+                    result = resultArray
+                }
+
+
                 console.log(result);
                 input.textContent = result;
             });
@@ -699,6 +859,16 @@ division.addEventListener('click', () => {
             console.log(result.countDecimals())
             if (result.countDecimals() > 5) {
                 result = result.toFixed(5);
+            }
+
+            let resultArray = String(result).split("").map((result) => {
+                return Number(result)  
+            })
+            if (resultArray.length > 8) {
+                while (resultArray.length > 8) {
+                    resultArray.pop();
+                }
+                result = resultArray
             }
         }
         console.log(result);
@@ -818,6 +988,18 @@ equal.addEventListener('click', () => {
                 result = result.toFixed(5);
             }
         }
+        let resultArray = String(result).split("").map((result) => {
+            return Number(result)  
+        })
+        if (resultArray.length > 8) {
+            while (resultArray.length > 8) {
+                resultArray.pop();
+            }
+            resultArray = resultArray.join("");
+            resultArray = Number(resultArray);
+            result = resultArray;
+        }
+
         console.log(result);
         input.textContent = result;
     }
