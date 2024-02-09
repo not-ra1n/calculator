@@ -87,7 +87,7 @@ buttons.forEach((button) => {
                 }
             } else {
                 let resultArray = String(result).split("").map((result) => {
-                    return Number(result)  
+                    return result;
                 })
                 if (resultArray.length > 8) {
                     while (resultArray.length > 8) {
@@ -97,6 +97,99 @@ buttons.forEach((button) => {
                 }
             }
             
+            // to check if num2 is greater than 8 characters
+
+            if (operator !== undefined) {
+                lastOperator = valuesOne[valuesOne.length -1];
+                if (operator !== lastOperator || "=" !== lastOperator) {
+                    console.log(operator)
+                    console.log(lastOperator)
+                    const chicken = valuesOne.reduce((a, e, i) => {
+                            if (e === "+" || e === "-"
+                            || e === "*" || e === "/")
+                            a.push(i);
+                            return a;
+                        }, []);
+                    console.log(chicken);
+                    console.log(chicken.length);
+
+
+                    // added the watch thing to watch the length of chicken?
+                    newChickenLength = chicken.length
+                    value = newChickenLength
+                    console.log(value);
+                    oldChickenLength = newChickenLength
+                    if (newChickenLength != oldChickenLength) {
+                        alert ("hello");
+                    }
+
+
+                
+
+
+
+
+
+                    endOfChicken = chicken[chicken.length - 1];
+                    console.log(endOfChicken);
+
+                    valuesOneLastIndex = valuesOne[endOfChicken];
+
+                    console.log(valuesOneLastIndex)
+                    console.log(valuesOne.length); 
+
+
+                    lengthOfNum2 = valuesOne.length - endOfChicken - 1
+                    console.log(lengthOfNum2);
+                    if (valuesOne[valuesOne.length -1] !== "=") {
+
+                    if (lengthOfNum2 > 8) {
+                        valuesOne.splice(-1, 1);
+                            console.log(valuesOne)
+                            lengthOfNum2 = lengthOfNum2 - 1
+                        }
+                    }
+                    // function check2(oldValue) {
+                    //     undefined === oldValue && (oldValue = endOfChicken);
+                    //     clearCheck = setInterval(repeatCheck,500,oldValue);
+                    //     secondLastElementChicken = chicken[chicken.length - 2];
+                    //     lastElementChicken = chicken[chicken.length - 1];
+                    //     function repeatCheck(oldValue) {
+                    //         if (endOfChicken === oldValue) {
+                    //             // do something
+                    //             if (lengthOfNum2 > 8) {
+                    //                 clearInterval(clearCheck);
+                    //                     valuesOne.pop
+                    //                     console.log(valuesOne)
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    // check2();
+
+
+
+                    
+                    if (chicken.length < 2) {
+                        secondToLastOperator = chicken[0];
+                        lastOperatorIndex = chicken[1];
+                    } else {
+                    secondToLastOperator = chicken[chicken.length - 2]
+            
+                    lastOperatorIndex = chicken[chicken.length -1]
+                    }
+            
+                    updatedSecond = secondToLastOperator + 1
+                    num2 = valuesOne.slice(updatedSecond, lastOperatorIndex);
+                    
+                    if (num2.toString().length > 8) {
+                        num2 = Array.from(num2);
+                        num2.pop
+                        num2 = num2.toString();
+                    }
+                }
+            }
 
         // shows you only the numbers you've inputed / the #'s you get
             if (operator != undefined) {
@@ -142,7 +235,7 @@ buttons.forEach((button) => {
             }
         } else {
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result;
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -152,6 +245,65 @@ buttons.forEach((button) => {
             }
         }
         
+        // to check if num2 is longer than 8 characters 
+
+        if (operator !== undefined) {
+            lastOperatorTwo = valuesTwo[valuesTwo.length -1];
+            if (operator !== lastOperatorTwo || "=" !== lastOperatorTwo) {
+        
+                const chicken2 = valuesTwo.reduce((a, e, i) => {
+                        if (e === "+" || e === "-"
+                        || e === "*" || e === "/")
+                        a.push(i);
+                        return a;
+                    }, []);
+                console.log(chicken2);
+        
+                if (chicken2.length < 2) {
+                    secondLastOperator2 = chicken2[0];
+                    lastOperatorIndex2 = chicken2[1];
+                } else {
+                secondLastOperator2 = chicken2[chicken2.length - 2]
+        
+                lastOperatorIndex2 = chicken2[chicken2.length -1]
+                }
+        
+                updatedSecond2 = secondLastOperator2 + 1
+                num2 = valuesTwo.slice(updatedSecond2, lastOperatorIndex2);
+                
+                if (num2.toString().length > 8) {
+                    num2 = Array.from(num2);
+                    num2.pop
+                    num2 = num2.toString();
+                }
+                endOfChicken2 = chicken2[chicken2.length - 1];
+                    console.log(endOfChicken2);
+
+                    valuesTwoLastIndex = valuesTwo[endOfChicken2];
+
+                    console.log(valuesTwoLastIndex)
+                    console.log(valuesTwo.length); 
+
+
+                    lengthOfNum2Two = valuesTwo.length - endOfChicken2 - 1
+                    console.log(lengthOfNum2Two);
+                    if (valuesTwo[valuesTwo.length -1] !== "=") {
+                        if (lengthOfNum2Two > 8) {
+                            valuesTwo.splice(-1, 1)
+                                console.log(valuesTwo)
+                                lengthOfNum2Two = lengthOfNum2 - 1
+                            }
+                    }
+                    
+            }
+        }
+
+        
+
+
+
+
+
         if (valuesTwo.indexOf("=") == 0) {
             input.textContent = 0;
         } else {
@@ -181,6 +333,8 @@ buttons.forEach((button) => {
             
     });
 });
+
+
 
 const addition = document.querySelector('#addition');
 
@@ -281,7 +435,7 @@ addition.addEventListener('click', () => {
                 }
             }
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -348,7 +502,7 @@ addition.addEventListener('click', () => {
         }
         // to not overflow numbers?
         let resultArray = String(result).split("").map((result) => {
-            return Number(result)  
+            return result;
         })
         if (resultArray.length > 8) {
             while (resultArray.length > 8) {
@@ -446,7 +600,7 @@ subtraction.addEventListener('click', () => {
                 }
             }
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result;
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -514,7 +668,7 @@ subtraction.addEventListener('click', () => {
         console.log(result);
 
         let resultArray = String(result).split("").map((result) => {
-            return Number(result)  
+            return result;
         })
         if (resultArray.length > 8) {
             while (resultArray.length > 8) {
@@ -615,7 +769,7 @@ multiplication.addEventListener('click', () => {
             }
 
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result;
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -680,7 +834,7 @@ multiplication.addEventListener('click', () => {
             }
 
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result;  
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -791,7 +945,7 @@ division.addEventListener('click', () => {
                 }              
 
                 let resultArray = String(result).split("").map((result) => {
-                    return Number(result)  
+                    return result;  
                 })
                 if (resultArray.length > 8) {
                     resultArray.pop();
@@ -862,7 +1016,7 @@ division.addEventListener('click', () => {
             }
 
             let resultArray = String(result).split("").map((result) => {
-                return Number(result)  
+                return result;  
             })
             if (resultArray.length > 8) {
                 while (resultArray.length > 8) {
@@ -913,6 +1067,7 @@ equal.addEventListener('click', () => {
         }
     }
 
+    console.log(valuesTwo);
     if(valuesTwo.length === 1) {
         console.log(valuesTwo.length)
         if (valuesTwo.includes("=")) {
@@ -967,6 +1122,7 @@ equal.addEventListener('click', () => {
         console.log(isNumber(num1));
         console.log(num1)
         indexOfEquals = valuesOne.indexOf('=')
+        console.log(indexOfEquals);
         console.log(indexOfOperator)
         nextIndex = indexOfOperator + 1
         num2 = valuesOne.slice(nextIndex, indexOfEquals)
@@ -989,15 +1145,19 @@ equal.addEventListener('click', () => {
             }
         }
         let resultArray = String(result).split("").map((result) => {
-            return Number(result)  
+            return result;  
         })
+        console.log(resultArray);
         if (resultArray.length > 8) {
             while (resultArray.length > 8) {
                 resultArray.pop();
             }
             resultArray = resultArray.join("");
+            console.log(resultArray)
             resultArray = Number(resultArray);
+            console.log(resultArray)
             result = resultArray;
+            console.log(result);
         }
 
         console.log(result);

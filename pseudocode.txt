@@ -312,14 +312,329 @@ const chicken = valuesOne.reduce((a, e, i) => {
                 return a;
             }, []);
             console.log(chicken);
+            console.log(chicken.length);
+
+when operator is clicked (operator is defined) 
+    num2 === numbers between first operator clicked and last operator clicked'
     
-               let turkey = (chicken[chicken.length-2]);
-                console.log(turkey);       
+        if (num2.length > 8) {
+            num2.pop()
+        } 
+
+if (operator != undefined) {
+    const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+            console.log(chicken);
+            console.log(chicken.length);
+
+            let turkey = (chicken[chicken.length-2]);
+            console.log(turkey);       
             
-                let water = valuesOne[turkey];
-                console.log(water);
+            let water = valuesOne[turkey];
+            console.log(water);
+}
+
+/ to logic from lines 343 to 402 makes sense in a way, and keep up the good work
+/ but the code doesn't work just yet cause I think lastOperatorIndex isn't defined yet
+
+/ i think you might have to look into the logic where if chicken.length increases or like if there is another operator
 
 
+if (operator !== undefined) {
+    lastOperator = valuesOne[valuesOne.length -1];
+    lastOperatorTwo = valuesTwo[valuesTwo.length -1];
+    if (operator !== lastOperator || "=" !== lastOperator) {
+
+        const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+        console.log(chicken);
+
+        if (chicken.length < 2) [
+            secondToLastOperator = chicken[0];
+            lastOperatorIndex = chicken[1];
+        ] else {
+        secondToLastOperator = chicken[chicken.length - 2]
+
+        lastOperatorIndex = chicken[chicken.length -1]
+        }
+
+        updatedSecond = secondToLastOperator + 1
+        num2 = valuesOne.slice(updatedSecond, lastOperatorIndex);
+        
+        if (num2.toString().length > 8) {
+            num2 = Array.from(num2);
+            num2.pop
+            num2 = num2.toString();
+        }
+    } else {
+
+    }
+    if (operator !== lastOperatorTwo || "=" !== lastOperatorTwo) {
+
+        const chicken2 = valuesTwo.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+        console.log(chicken2);
+
+        if (chicken2.length < 2) [
+            secondLastOperator2 = chicken2[0];
+            lastOperatorIndex2 = chicken2[1];
+        ] else {
+        secondLastOperator2 = chicken2[chicken2.length - 2]
+
+        lastOperatorIndex2 = chicken2[chicken2.length -1]
+        }
+
+        updatedSecond2 = secondLastOperator2 + 1
+        num2 = valuesTwo.slice(updatedSecond2, lastOperatorIndex2);
+        
+        if (num2.toString().length > 8) {
+            num2 = Array.from(num2);
+            num2.pop
+            num2 = num2.toString();
+        }
+    }
+}
+
+you could potentially solve this via two ways
+1. you check if chicken.length increases or if there is an equals sign at the end
+2. you check the valuesOne/valuesTwo arrays and see what their last values are
+
+
+/ potentially fixing these lines of code
+
+if (operator !== undefined) {
+
+        const chicken = valuesOne.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+        console.log(chicken);
+        console.log(chicken.length)
+
+
+first store the length of chicken 1 in a variable to calculate how many operators have been clicked
+    then whatever numbers are between the last operator that has been clicked and then a new operator
+    that has been clicked
+        store that as num2 and display those numbers
+        if (num2 is greater than 7) {
+            delete the last the number of num2
+        }
+
+
+
+newChickenLength = chicken.length
+oldChickenLength = newChickenLength
+if (newChickenLength != oldChickenLength) {
+    alert ("hello");
+}
+
+
+/ potential fix
+
+let secondLastElementChicken = chicken[chicken.length - 2];
+let lastElementChicken = chicken[chicken.length - 1];
+
+
+/ thoughts behind error 2/7/24
+
+click numbers for num1
+    then click an operator
+the numbers that are clicked after that operator and before the next "=" or operator is clicked, 
+    is num2
+if those numbers are greater than 8
+    delete the last number
+
+you might just have to do it off of the first operator
+
+the numbers that are pressed after the last operator are num2
+    if those numbers are greater than 8, before another operator or equals sign has been hit,
+        delete the last number  
+
+// what you need to do 2/7/24
+
+you need to check if an operator is clicked, 
+2. see how many numbers are ckicked after the last operator
+3. if those numbers are greater than 8, delete the last number
+4. however if a new operator or equals sign has been clicked, before num2 reaches numbers, don't worry about it
+
+
+addition.addEventListener('click', () => {
+    console.log("i have been clicked");
+    const chicken = valuesOne.reduce((a, e, i) => {
+                            if (e === "+" || e === "-"
+                            || e === "*" || e === "/")
+                            a.push(i);
+                            return a;
+                        }, []);
+                    console.log(chicken);
+                    console.log(chicken.length);
+                    newChickenLength = chicken.length
+                    value = newChickenLength
+                    console.log(value);
+    function check1(oldValue) {
+                        undefined === oldValue && (oldValue = value);
+                        clearCheck = setInterval(repeatCheck,500,oldValue);
+                        secondLastElementChicken = chicken[chicken.length - 2];
+                        lastElementChicken = chicken[chicken.length - 1];
+                        function repeatCheck(oldValue) {
+                            if (value !== oldValue) {
+                                // do something
+                                clearInterval(clearCheck);
+                                console.log("I have changed")
+                            }
+                        }
+}
+});
+
+
+you may want to check if the last operator of the
+chicken array changes, then check what are the numbers/
+indexes of numbers between the the new last operator/equals
+sign and previous last operator/equals sign 
+
+
+how many numbers were clicked after the an operator has been clicked?
+
+valuesOne.length
+endOfChicken index
+
+valuesOneLastIndex = valuesOne[endOfChicken];
+
+console.log(valuesOneLastIndex)
+
+lengthOfNum2 = valuesOne.length - endOfChicken - 1
+console.log(lengthOfNum2);
+
+
+function check2(oldValue) {
+                        undefined === oldValue && (oldValue = endOfChicken);
+                        clearCheck = setInterval(repeatCheck,500,oldValue);
+                        secondLastElementChicken = chicken[chicken.length - 2];
+                        lastElementChicken = chicken[chicken.length - 1];
+                        function repeatCheck(oldValue) {
+                            if (endOfChicken === oldValue) {
+                                // do something
+                                if (lengthOfNum2 > 8) {
+                                    clearInterval(clearCheck);
+                                        valuesOne.pop
+                                        console.log(valuesOne)
+                                    }
+                                }
+                            }
+                        }
+}
+
+if endOfChicken does not change {
+    if (lengthOfNum2 > 8) {
+        valuesOne.pop
+        console.log(valuesOne)
+    }
+}
+
+
+
+
+
+
+
+you may want to define the index of the operator, then check
+    how many more indexes appeared after it
+
+
+
+/ was able to add the watch thing to the code, just have to fix it a little bit
+
+function check1(oldValue) {
+    undefined === oldValue && (oldValue = value);
+    clearCheck = setInterval(repeatCheck,500,oldValue);
+    function repeatCheck(oldValue) {
+        if (value !== oldValue) {
+            // do something
+            clearInterval(clearCheck);
+            console.log("hello");
+        }
+    }
+}
+
+check1();
+
+/ what do you want to happen with the code above? 2/2/2024
+
+what I want to happen is that when user clicks a number in the first place, than clicks an operator, the numbers between
+the NEXT clicked operator or equals sign will be num2,
+    if num2 is greater than 8, than we want to pop the last number
+
+
+
+
+do you need to do something about the equals sign?
+/
+
+
+
+        if (chicken.length < 2) [
+            secondToLastOperator = chicken[0];
+            lastOperatorIndex = chicken[1];
+        ] else {
+        secondToLastOperator = chicken[chicken.length - 2]
+
+        lastOperatorIndex = chicken[chicken.length -1]
+        }
+
+        updatedSecond = secondToLastOperator + 1
+        num2 = valuesOne.slice(updatedSecond, lastOperatorIndex);
+        
+        if (num2.toString().length > 8) {
+            num2 = Array.from(num2);
+            num2.pop
+            num2 = num2.toString();
+        }
+    } else {
+        
+    }
+    if (operator !== lastOperatorTwo || "=" !== lastOperatorTwo) {
+
+        const chicken2 = valuesTwo.reduce((a, e, i) => {
+                if (e === "+" || e === "-"
+                || e === "*" || e === "/")
+                a.push(i);
+                return a;
+            }, []);
+        console.log(chicken2);
+
+        if (chicken2.length < 2) [
+            secondLastOperator2 = chicken2[0];
+            lastOperatorIndex2 = chicken2[1];
+        ] else {
+        secondLastOperator2 = chicken2[chicken2.length - 2]
+
+        lastOperatorIndex2 = chicken2[chicken2.length -1]
+        }
+
+        updatedSecond2 = secondLastOperator2 + 1
+        num2 = valuesTwo.slice(updatedSecond2, lastOperatorIndex2);
+        
+        if (num2.toString().length > 8) {
+            num2 = Array.from(num2);
+            num2.pop
+            num2 = num2.toString();
+        }
+    }
+}
 
 
 
@@ -328,4 +643,5 @@ const chicken = valuesOne.reduce((a, e, i) => {
 
 if you click an operator, have that operator selected until a number is clicked
 
-
+// if another error appears with like something not being a number, remember that you removed Number() from return
+// Number(result) from like all the resultArray things like for example from like 701 (1/23/24)
