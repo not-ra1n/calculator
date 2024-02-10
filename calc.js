@@ -146,7 +146,7 @@ buttons.forEach((button) => {
                     if (lengthOfNum2 > 8) {
                         valuesOne.splice(-1, 1);
                             console.log(valuesOne)
-                            lengthOfNum2 = lengthOfNum2 - 1
+                            // lengthOfNum2 = lengthOfNum2 - 1
                         }
                     }
                     // function check2(oldValue) {
@@ -291,7 +291,7 @@ buttons.forEach((button) => {
                         if (lengthOfNum2Two > 8) {
                             valuesTwo.splice(-1, 1)
                                 console.log(valuesTwo)
-                                lengthOfNum2Two = lengthOfNum2 - 1
+                                // lengthOfNum2Two = lengthOfNum2Two - 1
                             }
                     }
                     
@@ -445,6 +445,7 @@ addition.addEventListener('click', () => {
                     resultArray = Number(resultArray);
                 result = resultArray
             }
+                result = result.join("")
                 console.log(result);
                 input.textContent = result;
             });
@@ -512,6 +513,7 @@ addition.addEventListener('click', () => {
                 resultArray = Number(resultArray);
             result = resultArray;
         }
+        result = result.join("")
         console.log(result);
         input.textContent = result;
         }
@@ -608,6 +610,7 @@ subtraction.addEventListener('click', () => {
                 }
                 result = resultArray
             }
+                result = result.join("")
                 console.log(result);
                 input.textContent = result;
             });
@@ -777,7 +780,7 @@ multiplication.addEventListener('click', () => {
                 }
                 result = resultArray
             }
-
+                result = result.join("")
                 console.log(result);
                 input.textContent = result;
             });
@@ -951,7 +954,7 @@ division.addEventListener('click', () => {
                     resultArray.pop();
                     result = resultArray
                 }
-
+                result = result.join("")
 
                 console.log(result);
                 input.textContent = result;
@@ -1162,6 +1165,7 @@ equal.addEventListener('click', () => {
 
         console.log(result);
         input.textContent = result;
+        console.log(input.textContent)
     }
 
     
